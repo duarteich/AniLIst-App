@@ -1,5 +1,5 @@
 //
-//  SerieDetail.swift
+//  Episode.swift
 //  AniList App
 //
 //  Created by Christyan Huber Duarte Ibañez on 9/21/17.
@@ -8,12 +8,11 @@
 
 import ObjectMapper
 
-class SerieDetail: Mappable {
+class Episode: Mappable {
     
     var id: Int?
+    var name: String?
     var description: String?
-    var characters: [Character]?
-    var episodes: [Episode]?
     
     required init?(map: Map) {
         
@@ -21,8 +20,7 @@ class SerieDetail: Mappable {
     
     func mapping(map: Map) {
         id <- map["id"]
+        name <- map["name"]
         description <- map["description"]
-        characters <- map["characters"]
-        episodes <- map["tags"]
     }
 }
