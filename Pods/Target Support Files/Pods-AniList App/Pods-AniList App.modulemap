@@ -1,0 +1,6 @@
+framework module Pods_AniList_App {
+  umbrella header "Pods-AniList App-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -29,7 +29,20 @@ class NetworkManager {
         let url = "\(baseUrl)/browse/anime?access_token=\(accessToken)"
         Alamofire.request(url).responseArray { (response: DataResponse<[Serie]>) in
             if response.error != nil {
-                print("error")
+                print("Error")
+            }
+            let seriesArray = response.result.value
+            if let seriesArray = seriesArray {
+                completion(seriesArray)
+            }
+        }
+    }
+    
+    func getSerieDetails(_ serieId: Int, completion: @escaping ((SerieDetail) -> Void)) {
+        let url = "\(baseUrl)/anime/\(serieId)/page?access_token=\(Session.sharedInstance.accessToken!)"
+        Alamofire.request(url).responseObject { (response: DataResponse<SerieDetail>) in
+            if response.error != nil {
+                print("Error")
             }
             let seriesArray = response.result.value
             if let seriesArray = seriesArray {
